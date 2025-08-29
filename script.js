@@ -10,3 +10,26 @@ toggleBtn.addEventListener("click", () => {
     toggleBtn.textContent = "🌙";
   }
 });
+
+// Mobile nav toggle
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+
+  // Toggle hamburger icon
+  if (navLinks.classList.contains("show")) {
+    hamburger.textContent = "✖";
+  } else {
+    hamburger.textContent = "☰";
+  }
+});
+
+// Close menu when a nav link is clicked (mobile)
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+    hamburger.textContent = "☰"; // reset icon
+  });
+});
