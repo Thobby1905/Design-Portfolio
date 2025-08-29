@@ -24,20 +24,33 @@ header h1 {
   margin-bottom: 0.5rem;
 }
 
-nav ul {
-  list-style: none;
+/* --- Base nav --- */
+nav {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
 }
 
-nav a {
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
 }
 
-nav a:hover {
+.nav-links a:hover {
   color: #f39c12;
 }
 
@@ -50,10 +63,26 @@ nav a:hover {
   color: #fff;
 }
 
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.hamburger:active {
+  transform: scale(0.9); /* press effect */
+}
+
 /* Sections */
 section {
   padding: 2rem;
   text-align: center;
+  max-width: 900px;
+  margin: auto;
 }
 
 h2 {
@@ -104,44 +133,36 @@ body.dark footer {
 body.dark nav a {
   color: #eee;
 }
-/* --- Base layout (desktop/tablet) --- */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
 
-section {
-  padding: 2rem;
-  max-width: 900px;
-  margin: auto;
-}
-
-/* --- Mobile tweaks --- */
+/* --- Mobile Styles --- */
 @media (max-width: 768px) {
-  nav ul {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #fff;
     flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
+    align-items: flex-start;
+    width: 200px;
+    padding: 1rem;
+    display: none; /* hidden by default */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
 
-  nav a {
-    font-size: 1.2rem;
+  .nav-links.show {
+    display: flex; /* show when toggled */
   }
 
-  header h1 {
-    font-size: 1.8rem;
+  .nav-links li {
+    margin: 0.5rem 0;
   }
 
-  section {
-    padding: 1.5rem;
-    text-align: left;
-  }
-
-  form input,
-  form textarea {
-    width: 100%;
+  .nav-links a {
+    color: #222; /* darker on white bg */
   }
 }
 
@@ -150,7 +171,7 @@ section {
     font-size: 1.5rem;
   }
 
-  nav a {
+  .nav-links a {
     font-size: 1rem;
   }
 
